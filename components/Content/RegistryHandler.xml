@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="RegistryHandler" extends="Task" > 
+  <interface>
+    <!-- Field to issue a request to the handler -->
+  	<field id="userInfo" type="assocarray"/>
+  	<!-- Field to store positions of viewed videos -->
+  	<field id="videoPositions" type="assocarray"/>
+  	<!-- Field to fetch positions of viewed videos -->
+  	<field id="getVideoPos" type="assocarray"/>
+  	<!-- Field to store request to fetch registry info -->
+  	<field id="regRequest" type="assocarray"/>
+  	<!-- Contains the response content -->
+    <field id="content" type="assocarray"/>
+    <!-- variable so updateContent only runs once -->
+    <field id="contentSet" type="boolean"/>
+  </interface>
+  
+    <script type="text/brightscript" uri="pkg:/components/Content/RegistryHandler.brs"/>
+</component>

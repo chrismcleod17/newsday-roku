@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Copyright 2016 Roku Corp.  All Rights Reserved. -->
+
+<component name="DeepLinkVideoPlayer" extends="Scene" >
+
+  <children>
+     
+    <!-- Warning if bad URL request/timeout -->
+    <Dialog
+      id="WarningDialog"
+      title="Content Loading Failed"
+      message="The content is not available at this time. Press option '*' to continue to a blank channel or 'home' to exit."
+      visible="false" />
+ 	
+   <Activation
+   		id="Activation"
+   		visible = "false" /> 
+    
+    <!-- Playback node -->
+    <Video
+      id="VideoPlayer"
+      visible="false"
+      translation="[0, 0]"
+      width="1920"
+      height="1080" />
+
+  </children>
+
+  <interface>
+    <field id="content" type="node" onChange="OnChangeContent" />
+   
+    <!-- Playback flag -->
+    <field id="videoFinishedFlag" type="bool" alwaysnotify="true" />
+    <field id ="videoState" type="string" alwaysnotify="true" alias="VideoPlayer.state" onChange="onVideoStateChange" />
+
+  </interface>
+
+  <script type="text/brightscript" uri="pkg:/components/DeepLinkVideoPlayer/DeepLinkVideoPlayer.brs" />
+
+</component>

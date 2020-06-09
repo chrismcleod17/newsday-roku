@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2016 Roku Corp.  All Rights Reserved. -->
+
+<component name="HeroScreen" extends="Group" initialFocus="RowList">
+
+  <children>
+    <!-- For transition animation -->
+	<Rectangle
+      id="Background"
+      width="1920"
+      height="1080"
+      color="#ebebeb"/>
+
+    <!-- The main content -->
+    <RowList
+	    id="RowList"
+      itemComponentName="customItem"
+      rowTitleComponentName="customRowTitle"
+      focusXOffset="[600,165,165,165,165,165,165]"
+      itemSize="[1920,475]"
+      itemSpacing="[35,0]"
+      numRows="2"
+      rowFocusAnimationStyle="FixedFocusWrap"
+      focusBitmapUri="pkg:/images/focus_grid.9.png"
+      rowItemSize="[[845,469],[456,256]]"
+      rowItemSpacing="[[30,0]]"
+      rowLabelOffset="[[165,8]]"
+      rowLabelColor="#3b92be"
+      rowLabelFont="font:LargeSystemFont"
+      showRowLabel="[false, true]"
+      showRowCounter="false"
+      translation="[0,220]"/>
+            
+  </children>
+
+  <interface>
+    <!-- Grid Content Node -->
+    <field id="content" type="node" alias="RowList.content" />
+
+    <!-- Row item selection handler -->
+    <field id="rowItemSelected" type="intarray" alias="RowList.rowItemSelected" alwaysnotify="true"/>
+
+    <!-- Row item focused handler - sets background image uri and focusedContent field -->
+    <field id="itemFocused" type="intarray" alias="RowList.rowItemFocused" onChange="OnItemFocused"/>
+
+    <!-- Interface to focused item (Content Node) -->
+    <field id="focusedContent"  type="node"/>
+    
+    <!-- FocusedRow for video menu -->
+    <field id="focusedRow" type="node" />
+
+    <!-- # of requests that have bad/no content (not a 200 response) -->
+    <field id="numBadRequests" type="integer"/>
+  </interface>
+
+  <script type="text/brightscript" uri="pkg:/components/HeroScreen/HeroScreen.brs" />
+
+</component>

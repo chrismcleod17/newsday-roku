@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="Search" extends="Group" initialFocus="Keyboard" xsi:noNamespaceSchemaLocation="https://devtools.web.roku.com/schema/RokuSceneGraph.xsd">
+	<children>
+		     
+	<Rectangle
+      	id="SearchBackground"
+      	height="1080"
+      	width="1920"
+      	color="#ebebeb" />
+      	
+   <Animation
+      id="fadeinAnimation"
+      repeat="false"
+      duration="0.3">
+      <FloatFieldInterpolator
+        id="backgroundInterpolator"
+        key="[0.0, 1.0]"
+        keyValue="[0.0, 1.0]"
+        fieldToInterp="SearchBackground.opacity"/>
+    </Animation>
+
+    <Animation
+      id="fadeoutAnimation"
+      repeat="false"
+      duration="0.3">
+      <FloatFieldInterpolator
+        id="backgroundInterpolator"
+        key="[0.0, 1.0]"
+        keyValue="[1.0, 0.0]"
+        fieldToInterp="SearchBackground.opacity"/>
+    </Animation>
+    
+    <!-- Background fade -->
+    <Rectangle
+      translation="[0,0]"
+      width="1920"
+      height="1080"
+      color="#ebebeb"
+      opacity="1.0" />
+	
+	<Keyboard
+		id="Keyboard"
+		keyColor="#959595"
+		focusedKeycolor="#000000"
+		translation="[250,20]" />
+		
+<!-- 				scale="[0.9, 0.9]" -->
+		
+	<Button
+		id="Button"
+		translation = "[270, 500]"
+		text="Search"
+		showFocusFootprint = "true"
+		textColor="#00000"/>
+		
+    <!-- The main content -->
+    <RowList
+	    id="SearchRowList"
+      itemComponentName="customItem"
+      rowTitleComponentName="customRowTitle"
+      focusXOffset="[165]"
+      itemSize="[1920,475]"
+      itemSpacing="[30,0]"
+      numRows="1"
+      rowFocusAnimationStyle="FixedFocusWrap"
+      focusBitmapUri="pkg:/images/focus_grid.9.png"
+      rowItemSize="[[436,350]]"
+      rowItemSpacing="[[30,0]]"
+      rowLabelOffset="[[165,8]]"
+      rowLabelColor="#3b92be"
+      showRowLabel="true"
+      showRowCounter="true"
+      translation="[0,625]"/>
+      
+   <Label
+   	id="LoadingLabel"
+   	text="Loading..."
+   	color="#000000"
+   	width="1920"
+   	horizAlign="center"
+   	visible="false"
+   	translation="[0, 800]">
+   	<Font role="font" uri="pkg:/fonts/HelveticaNeueLTStd-Md.otf" size="34" />
+  </Label>
+      
+    <!-- Playback node -->
+    <Video
+      id="SearchVideoPlayer"
+      visible="false"
+      translation="[0, 0]"
+      width="1920"
+      height="1080" />
+      
+    <Rectangle
+   		id="SearchVideoRectangle"      	
+   		visible="false"
+      	height="480"
+      	width="1920"
+      	color="#363636"
+      	translation = "[0, 600]" />
+      	
+   <Rectangle
+   		id="SearchVideoBlueLine"
+   		visible = "false"
+   		height = "15"
+   		width = "1920"
+   		color = "#1a81be"
+   		translation = "[0, 600]" />
+   		
+      
+    <!-- Video nav while playing -->
+    <RowList
+	    id="SearchVideoRowList"
+      itemComponentName="customItem"
+      focusXOffset="[165]"
+      itemSize="[1920,475]"
+      itemSpacing="[30,0]"
+      numRows="1"
+      rowFocusAnimationStyle="FixedFocusWrap"
+      focusBitmapUri="pkg:/images/focus_grid.9.png"
+      loadingBitmapUri="pkg:/images/channel-poster_sd.png"
+      failedBitmapUri="pkg:/images/channel-poster_sd.png"
+      rowItemSize="[[436,350]]"
+      rowItemSpacing="[[30,0]]"
+      rowLabelOffset="[[165,8]]"
+      rowLabelColor="#3b92be"
+      rowLabelFont="font:LargeSystemFont"
+      showRowLabel="[false]"
+      showRowCounter="false"
+      translation="[0,650]"
+      visible = "false" />
+      
+      
+	</children>
+	
+	<interface>
+	    <!-- Grid Content Node -->
+    	<field id="content" type="node" alias="SearchRowList.content" />
+    	<field id="videoContent" type="node" alias="SearchVideoRowList.content" />
+    	
+    	<!-- Row item selection handler -->
+    	<field id="rowItemSelected" type="intarray" alias="SearchRowList.rowItemSelected" alwaysnotify="true" onChange="onRowItemSelected"/>
+    	<field id="videoRowItemSelected" type="intarray" alias="SearchVideoRowList.rowItemSelected" alwaysnotify="true" onChange="onVideoRowItemSelected"/>
+    	<!-- Row item focused handler - sets background image uri and focusedContent field -->
+    	<field id="itemFocused" type="intarray" alias="SearchRowList.rowItemFocused" onChange="OnItemFocused"/>
+    	<field id="videoItemFocused" type="intarray" alias="SearchVideoRowList.rowItemFocused" onChange="OnVideoItemFocused"/>
+    	<!-- Playback flag -->
+    	<field id="videoPlayerVisible" type="bool" alwaysnotify="true" alias="SearchVideoPlayer.visible"  onChange="onVideoVisibleChange" />
+    	
+        <field id="videoFromfront" type="bool" />
+                    
+    	<!--  Playlist  -->
+    	<field id="contentPlaylist" type="node" />
+
+    	<!-- Interface to focused item (Content Node) -->
+    	<field id="focusedContent"  type="node"/>
+    	<field id="focusedVideoContent"  type="node"/>
+
+    	<!-- # of requests that have bad/no content (not a 200 response) -->
+    	<field id="numBadRequests" type="integer"/>
+	</interface>
+	
+	 <!-- main handler -->
+    <script type="text/brightscript" uri="pkg:/components/Search/Search.brs" />
+</component>

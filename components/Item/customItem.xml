@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2016 Roku Corp.  All Rights Reserved. -->
+
+<component name="customItem" extends="Group">
+
+  <interface>
+    <field id="width"       type="float" onChange="updateLayout"/>
+    <field id="height"      type="float" onChange="updateLayout"/>
+    <field id="itemContent" type="node" onChange="itemContentChanged" />
+    <field id="rowHasFocus" type="bool" onChange="rowFocusChanged" />
+  </interface>
+
+  <script type="text/brightscript">
+    <![CDATA[
+      sub Init()
+        m.Poster = m.top.findNode("poster")
+        m.Title = m.top.findNode("title")
+        m.Duration = m.top.findNode("duration")
+        m.Date = m.top.findNode("date")
+        m.Locked = m.top.findNode("lockedcontent")
+        m.Poster.observeField("loadStatus", "onLoadStatusChanged")
+        m.Shadow = m.top.findNode("shadow")
+      end sub
+
+      sub itemContentChanged()
+        updateLayout()
+        m.Poster.uri = m.top.itemContent.HDPOSTERURL
+        m.Title.text = m.top.itemContent.TITLE
+        m.Duration.text = GetDurationStringStandard(m.top.itemContent.LENGTH)
+        m.Date.text = m.top.itemContent.RELEASEDATE
+        
+        limited = m.top.itemContent.TEXTOVERLAYBODY
+        'print limited
+        
+        if(limited = "limited")
+        	m.Locked.visible = false 'true
+        else
+        	m.Locked.visible = false
+        end if
+      end sub
+      
+      sub onLoadStatusChanged()
+      	if m.Poster.loadStatus = "failed"
+      		m.Poster.uri = "pkg:/images/channel-poster_sd.png"
+        end if
+      end sub
+           
+      Function GetDurationStringStandard( TotalSeconds = 0 As Integer ) As String
+   		datetime = CreateObject( "roDateTime" )
+   		datetime.FromSeconds( TotalSeconds )
+      
+   		hours = datetime.GetHours().ToStr()
+   		minutes = datetime.GetMinutes().ToStr()
+   		seconds = datetime.GetSeconds().ToStr()
+   
+   		If Len( hours ) = 1 Then
+      		hours = "0" + hours
+   		End If
+   		If Len( minutes ) = 1 Then
+      		minutes = "0" + minutes
+   		End If
+   		If Len( seconds ) = 1 Then
+      		seconds = "0" + seconds
+   		End If
+   
+   		If hours <> "00" Then
+      		Return hours + ":" + minutes + ":" + seconds
+   		Else
+      		Return minutes + ":" + seconds
+   		End If
+	End Function
+	
+      sub updateLayout()
+        if m.top.height > 0 And m.top.width > 0 then
+          m.Poster.width  = m.top.width
+          m.Poster.height = m.top.height
+          
+          smallTitleFont  = CreateObject("roSGNode", "Font")
+		  smallTitleFont.uri = "pkg:/fonts/HelveticaNeueLTStd-Md.otf"
+          smallTitleFont.size = 24
+          
+          largeTitleFont  = CreateObject("roSGNode", "Font")
+		  largeTitleFont.uri = "pkg:/fonts/HelveticaNeueLTStd-Roman.otf"
+          largeTitleFont.size = 54
+                    
+          if(m.top.height < 400)
+			'm.Poster.height = "256"
+			'm.Poster.width="456"
+			m.Title.translation = "[10,258]"
+			m.Title.color = "#000000"
+		    m.Title.width = "430"
+		    m.Title.height = "0"
+		    m.Title.font = smallTitleFont
+		    m.title.vertAlign = "top"
+		    m.title.maxLines="2"
+            m.Duration.translation = "[15, 0]"
+            m.Date.visible = true
+            m.Date.translation = "[12, 0]"
+           ` m.Date.vertAlign = "top"
+            m.Locked.translation = "[393, 184]"
+            m.Shadow.uri = "pkg:/images/nd-roku-row-shadow.png"
+            m.Shadow.width = m.Poster.width
+            m.Shadow.height = m.Poster.height
+		  end if
+          
+          m.Duration.width = m.Poster.width
+          m.Duration.height = m.Poster.height
+          m.Duration.vertAlign = "bottom"
+                    
+          if(m.top.height > 400)
+            ' m.Poster.height = "512"
+             'm.Poster.width = "922"
+             m.Title.color="#ffffff"
+             m.Title.translation = [10, 0]
+             m.Title.vertAlign = "bottom"
+             m.Title.font= largeTitleFont
+             m.Title.width = m.top.width - 500
+             m.Title.maxLines="3"
+             m.Title.height = (m.top.height - 25)
+             m.Date.visible = false
+             m.Duration.translation = [15, 0]       
+             m.Locked.translation = "[955, 395]"   
+             m.Shadow.uri = "pkg:/images/nd-roku-main-shadow.png"
+             m.Shadow.width = m.Poster.width
+             m.Shadow.height = m.Poster.height	
+          end if		  
+        end if
+      end sub
+            ]]>
+  </script>
+  
+  <children>
+      <Poster id="poster" 
+      		loadDisplayMode="scaleToFill" />
+      <Poster id = "shadow"
+      	uri="pkg:/images/nd-roku-main-shadow.png" />
+      <Label id ="title"
+      		wrap="true"
+      		width="500"
+      		numLines="2"
+      		maxLines="2"
+      		lineSpacing="0.5"
+      		color="#000000"
+      		translation="[10,225]" />
+     <Label id = "duration"
+     	color="#ffffff"
+     	translation="[15,0]">
+     	<Font role="font" uri="pkg:/fonts/HelveticaNeueLTStd-Lt.otf" size="26" />
+     </Label>
+     <Label id = "date"
+     	color = "#999999"
+     	translation="[12,312]">
+     	<Font role="font" uri="pkg:/fonts/HelveticaNeueLTStd-Lt.otf" size="22" />
+    </Label>
+    <Poster id="lockedcontent"
+    	uri="pkg:/images/locked-content.png"
+    	width="34"
+    	height="34"/>
+  </children>
+</component>

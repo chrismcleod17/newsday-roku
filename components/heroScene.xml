@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<!-- Copyright 2016 Roku Corp.  All Rights Reserved. -->
+
+<component name="HeroScene" extends="Scene" >
+
+  <children>
+    <!-- RowList on HeroScene -->
+    <HeroScreen
+      id="HeroScreen"
+      visible="true"
+      translation="[0,0]"/>
+           
+     <Rectangle
+      	id="Options"
+      	visible="false"
+      	height="1080"
+      	width="1920"
+      	color="#ebebeb" />
+      	
+    <Label
+    	id="OptionsLabel"
+    	visible="false"
+    	color="#000000"
+    	text="Options:"
+    	translation = "[200, 250]">
+   		<Font role="font" uri="pkg:/fonts/HelveticaNeueLTStd-Roman.otf" size="40" />
+    </Label>
+    	     	
+    <!-- Control buttons (Button List) -->
+    <LabelList
+      id="Buttons"
+      visible = "false"
+      color="#000000"
+      numRows="5"
+      vertFocusAnimationStyle="floatingFocus"
+      focusBitmapBlendColor="#f5f8fa"
+      itemSpacing="[0,30]"
+      itemSize="[450, 100]"
+      translation="[200,350]">
+   		<Font role="font" uri="pkg:/fonts/HelveticaNeueLTStd-Lt.otf" size="32" />
+   		<Font role="focusedFont" uri="pkg:/fonts/HelveticaNeueLTStd-Md.otf" size="32" />
+    </LabelList>
+         
+    <ScrollableText
+   		id="FaqLabel"
+   		visible="false"
+   		color="#000000"
+   		width = "1800"
+   		height = "1070"
+   		horizAlign="left"   		
+   		translation = "[100,0]" >
+   		<Font role="font" uri="pkg:/fonts/HelveticaNeueLTStd-Lt.otf" size="32" />
+    </ScrollableText>
+   		
+   <ScrollableText
+   		id="TosLabel"
+   		visible="false"
+   		color="#000000"
+   		font="font:MediumSystemFont" 
+   		width = "1800"
+   		height = "1070"
+   		horizAlign="left"
+   		translation = "[100,0]" >
+   		<Font role="font" uri="pkg:/fonts/HelveticaNeueLTStd-Lt.otf" size="32" />
+    </ScrollableText>
+   		
+    <ScrollableText
+   		id="PrivacyLabel"
+   		visible="false"
+   		color="#000000"
+   		font="font:MediumSystemFont" 
+   		width = "1800"
+   		height = "1070"
+   		horizAlign="left"
+   		translation = "[100,0]" >
+   		<Font role="font" uri="pkg:/fonts/HelveticaNeueLTStd-Lt.otf" size="32" />
+    </ScrollableText>
+   		
+    <Overhang
+    	id="Overhang"
+      color="#1a81be"
+	  logoUri="pkg:/images/newsday-amp-logo-2.png"
+      showOptions="true"
+      optionsAvailable="true"
+      showClock="false"
+      opacity="1.0" />
+      
+    <!-- Warning if bad URL request/timeout -->
+    <Dialog
+      id="WarningDialog"
+      title="Content Loading Failed"
+      message="The content is not available at this time. Press option '*' to continue to a blank channel or 'home' to exit."
+      visible="false" />
+
+    <!-- The spinning wheel for when content is loading -->
+    <LoadingIndicator
+      id="LoadingIndicator"
+      clockwise="true"
+      spinInterval="2"
+      fadeInterval="0.5"
+      spacing="20"
+      imageWidth="100"
+      text="Loading..."
+      width="1920"
+      height="1080"
+      centered="false"
+      translation="[0, 0]"
+      textPadding="10"
+      font="font:SmallBoldSystemFont"
+      backgroundColor="0x551A8B"
+      backgroundOpacity="0"/>
+      
+      <!--       imageUri="pkg:/components/LoadingIndicator/loader.png" -->
+
+    <!-- Animation to fade the ScreenFade in/out -->
+    <ParallelAnimation id="FadeIn">
+      <Animation
+        id="HFadeOut"
+        duration=".4"
+        repeat="false"
+        easeFunction="inQuad">
+        <FloatFieldInterpolator
+          id="HFadeOutInterp"
+          key="[0,1]"
+          keyValue="[1.0, 0.0]"
+          fieldToInterp="HeroScreen.opacity"/>
+      </Animation>
+      <Animation
+        id="DSFadeIn"
+        duration=".4"
+        repeat="false"
+        easeFunction="inQuad">
+        <FloatFieldInterpolator
+          id="DSFadeInInterp"
+          key="[0,1]"
+          keyValue="[0.0, 1.0]"
+          fieldToInterp="VideoPlayer.opacity"/>
+      </Animation>
+    </ParallelAnimation>
+
+    <!-- Animation to fade the ScreenFade in/out -->
+    <ParallelAnimation id="FadeOut">
+      <Animation
+        id="HFadeIn"
+        duration=".4"
+        repeat="false"
+        easeFunction="inQuad">
+        <FloatFieldInterpolator
+          id="HFadeInInterp"
+          key="[0,1]"
+          keyValue="[0.0, 1.0]"
+          fieldToInterp="HeroScreen.opacity"/>
+      </Animation>
+      <Animation
+        id="DSFadeOut"
+        duration=".4"
+        repeat="false"
+        easeFunction="inQuad">
+        <FloatFieldInterpolator
+          id="DSFadeOutInterp"
+          key="[0,1]"
+          keyValue="[1.0, 0.0]"
+          fieldToInterp="VideoPlayer.opacity"/>
+      </Animation>
+    </ParallelAnimation>
+    
+    <Search
+    	id="Search"
+    	visible="false" /> 
+    	
+   <Activation
+   		id="Activation"
+   		visible = "false" /> 
+    
+    <!-- Playback node -->
+    <Video
+      id="VideoPlayer"
+      visible="false"
+      translation="[0, 0]"
+      width="1920"
+      height="1080" />
+      
+   <Rectangle
+   		id="VideoRectangle"      	
+   		visible="false"
+      	height="480"
+      	width="1920"
+      	color="#ebebeb"
+      	translation = "[0, 600]" />
+      	
+   <Rectangle
+   		id="VideoBlueLine"
+   		visible = "false"
+   		height = "15"
+   		width = "1920"
+   		color = "#1a81be"
+   		translation = "[0, 600]" />
+   		
+      
+    <!-- Video nav while playing -->
+    <RowList
+	    id="VideoRowList"
+      itemComponentName="customItem"
+      focusXOffset="[165]"
+      itemSize="[1920,475]"
+      itemSpacing="[30,0]"
+      numRows="1"
+      rowFocusAnimationStyle="FixedFocusWrap"
+      focusBitmapUri="pkg:/images/focus_grid.9.png"
+      rowItemSize="[[436,350]]"
+      rowItemSpacing="[[30,0]]"
+      rowLabelOffset="[[165,8]]"
+      rowLabelColor="#3b92be"
+      rowLabelFont="font:LargeSystemFont"
+      showRowLabel="[false]"
+      showRowCounter="false"
+      translation="[0,650]"
+      visible = "false" />
+
+  </children>
+
+  <interface>
+    <field id="content" type="node" alias="HeroScreen.content" onChange="OnChangeContent" />
+    <field id="videoContent" type="node" alias="VideoRowList.content" />
+    <field id="numBadRequests" type="integer" value="0" alias="HeroScreen.numBadRequests" />
+    <field id="rowItemSelected" type="intarray" alias="HeroScreen.rowItemSelected" alwaysNotify="true" onChange="OnRowItemSelected" />
+    <field id="videoRowItemSelected" type="intarray" alias="VideoRowList.rowItemSelected" alwaysnotify="true" onChange="onVideoRowItemSelected"/>
+    <field id="itemFocused" type="intarray" alias="RowList.rowItemFocused" onChange="OnItemFocused"/>
+    <field id="videoItemFocused" type="intarray" alias="VideoRowList.rowItemFocused" onChange="OnVideoItemFocused"/>
+    
+    <!-- Interface to focused item (Content Node) -->
+    <field id="focusedVideoContent"  type="node"/>
+    	
+    <!-- Playback flag -->
+    <field id="videoPlayerVisible" type="bool" alwaysnotify="true" alias="VideoPlayer.visible"  onChange="onVideoVisibleChange" />
+    <field id="activationVisible" type="bool" alwaysnotify="true" alias="Activation.visible" onChange="onActivationVisibleChange" />
+    <field id="didVideoFinish" type="bool" alwaysnotify="true" />
+    
+    <!-- Ad handling -->
+    <field id="adPlayFlag" type="bool" alwaysNotify="true" />
+	<field id="adFinishedPlaying" type="bool" alwaysNotify="true" />
+	
+	<field id="videoFromfront" type="bool" />
+	
+	<!-- Tracking handling -->
+	<field id="didTrack33" type="bool" alwaysNotify="true" />
+	<field id="didTrack66" type="bool" alwaysNotify="true" />
+	
+    <!-- Button press handler -->
+    <field id="itemSelected" type="integer" alwaysnotify="true" alias="Buttons.itemSelected" onChange="onItemSelected" />
+  </interface>
+
+  <script type="text/brightscript" uri="pkg:/components/HeroScene.brs" />
+
+</component>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2016 Roku Corp.  All Rights Reserved. -->
+
+<component name="customRowTitle" extends="Group">
+
+  <interface>
+    <field id="content" type="node" onChange="onContentChanged" />
+  </interface>
+
+  <script type="text/brightscript">
+    <![CDATA[
+      sub Init()
+        m.Poster = m.top.findNode("poster")
+        m.Title = m.top.findNode("title")
+        m.Advertiser = m.top.findNode("adLabel")
+        m.Poster.observeField("loadStatus", "onLoadStatusChanged")
+      end sub
+      
+      sub onLoadStatusChanged()
+      	print m.Poster.uri
+      	print m.Poster.loadStatus
+      	if m.Poster.loadStatus = "failed"
+      		print "load failed for poster"
+        end if
+      end sub
+
+      sub onContentChanged()
+        if(m.top.content.logo <> invalid)
+        	m.Poster.uri = m.top.content.logo
+        	m.Poster.visible = true
+        	m.Advertiser.visible = true
+        else
+        	m.Poster.visible = false
+        	m.Advertiser.visible = false
+        end if
+        m.Title.text = m.top.content.TITLE
+      end sub
+            ]]>
+  </script>
+  
+  <children>
+      <Poster id="poster" 
+      		width = "400"
+      		height = "45"
+      		loadDisplayMode="scaleToFit"
+      		uri="pkg:/images/luxury-living.png" 
+      		translation = "[1100, -2]"
+      		visible = "false" />
+      <Label id ="title"
+      		color="#3b92be">
+      		<Font role="font" uri="pkg:/fonts/HelveticaNeueLTStd-Roman.otf" size="40" />
+      		</Label>
+      <Label id= "adLabel"
+      	color="#000000"
+      	text="Advertiser video by"
+      	translation = "[900, 0]" 
+      	visible="false">
+      	<Font role="font" uri="pkg:/fonts/HelveticaNeueLTStd-Lt.otf" size="32" />
+      </Label>
+  </children>
+</component>

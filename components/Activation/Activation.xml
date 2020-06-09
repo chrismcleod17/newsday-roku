@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="Activation" extends="Group" xsi:noNamespaceSchemaLocation="https://devtools.web.roku.com/schema/RokuSceneGraph.xsd">
+	<children>
+		     
+	<Rectangle
+      	id="ActivationBackground"
+      	height="1080"
+      	width="1920"
+      	color="#ebebeb" />
+
+    <Rectangle
+      translation="[0,0]"
+      width="1920"
+      height="1080"
+      color="#ebebeb"
+      opacity="1.0" />
+      
+   <Label
+     id="ContentExclusiveLabel"
+     text="This content is exclusive to Newsday subscribers and Optimum subscribers"
+     color="#000000"
+     width="1920"
+     horizAlign="center"
+     translation = "[0, 300]" >
+     <Font role="font" uri="pkg:/fonts/HelveticaNeueLTStd-Roman.otf" size="50" />
+  </Label>
+     
+  <Label
+  	id="ListLabel1"
+  	text="1. Visit newsday.com/activate on your computer, smartphone, or tablet."
+    color="#00000"
+    translation = "[150, 425]" > 
+    <Font role="font" uri="pkg:/fonts/HelveticaNeueLTStd-Roman.otf" size="50" />
+  </Label>
+    
+  <Label
+  	id="ListLabel2"
+  	text="2. Enter the activation code below."
+    color="#00000"
+    translation = "[150, 500]"> 
+    <Font role="font" uri="pkg:/fonts/HelveticaNeueLTStd-Roman.otf" size="50" />
+  </Label>
+    
+  <Label
+  	id="ListLabel3"
+  	text="3. This screen will be dismissed once your subscription is verified."
+    color="#00000"
+    translation = "[150, 575]">
+    <Font role="font" uri="pkg:/fonts/HelveticaNeueLTStd-Roman.otf" size="50" />
+  </Label> 
+    
+   <Label
+   	 id="CodeLabel"
+   	 color="#000000"
+   	 width="1920"
+   	 horizAlign="center"
+   	 translation = "[0, 700]">
+   	 <Font role="font" uri="pkg:/fonts/HelveticaNeueLTStd-Roman.otf" size="150" />
+   </Label>
+         
+   <Label
+   	id="LoadingLabel"
+   	text="Loading..."
+   	color="#000000"
+   	visible="false"
+   	translation="[250, 700]"
+   />
+   
+   	<Button
+		id="Button"
+		translation = "[300, 500]"
+		text="Log Out"
+		textColor="#00000"
+		visible="false" />
+		
+	<Label
+		id="LoggedInLabel"
+		color="#000000"
+		translation="[300,300]"
+		visible="false" >
+		<Font role="font" uri="pkg:/fonts/HelveticaNeueLTStd-Roman.otf" size="50" />
+	</Label>
+		
+	<Timer
+  		id="testTimer"
+ 		repeat="true"
+  		duration="15"
+	/>
+      
+	</children>
+	
+	<interface>
+    	<field id="content" type="node" />
+    	<field id="code" type="String" />
+    	<field id="counter" type="Integer" />
+    	<field id="isActivated" type="boolean" />
+    	<field id="isVideoRequest" type="boolean" />
+	</interface>
+	
+	 <!-- main handler -->
+    <script type="text/brightscript" uri="pkg:/components/Activation/Activation.brs" />
+</component>

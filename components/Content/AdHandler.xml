@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2016 Roku Corp.  All Rights Reserved. -->
+
+<component name="AdHandler" extends="Task" >
+  <interface>
+    <!-- Field to issue a request to the handler -->
+  	<field id="request" type="assocarray"/>
+    <!-- variable so updateContent only runs once -->
+    <field id="shouldPlayVideo" type="boolean"/>
+  </interface>
+
+  <script type="text/brightscript" uri="pkg:/components/Content/AdHandler.brs"/>
+</component>

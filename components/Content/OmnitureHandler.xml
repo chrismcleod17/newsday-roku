@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="OmnitureHandler" extends="Task">
+  <interface>
+    <!-- Field to issue a request to the handler -->
+  	<field id="request" type="assocarray"/>
+  	<!-- Field to hold mediaInfo -->
+  	<field id="mediaInfo" type="assocarray"/>
+    <!-- Contains the response content -->
+    <field id="finished" type="boolean"/>
+  </interface>
+
+    <script type="text/brightscript" uri="pkg:/components/Content/OmnitureHandler.brs"/>
+    <script type="text/brightscript" uri="pkg:/source/adbmobile.brs" />
+</component>

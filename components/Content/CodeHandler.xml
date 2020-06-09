@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2016 Roku Corp.  All Rights Reserved. -->
+
+<component name="CodeHandler" extends="Task" >
+  <interface>
+    <!-- Field to issue a request to the handler -->
+  	<field id="request" type="assocarray"/>
+  	<!-- Contains the response content -->
+    <field id="content" type="assocarray"/>
+	<!-- Field to hold the response string -->
+    <!-- variable so updateContent only runs once -->
+    <field id="contentSet" type="boolean"/>
+    <!-- Cache of content -->
+    <field id="ContentCache" type="Node" />
+  </interface>
+
+  <script type="text/brightscript" uri="pkg:/components/Content/CodeHandler.brs"/>
+</component>
