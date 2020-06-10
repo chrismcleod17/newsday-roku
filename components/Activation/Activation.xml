@@ -6,13 +6,13 @@
       	id="ActivationBackground"
       	height="1080"
       	width="1920"
-      	color="#ebebeb" />
+      	color="#d6d4d4" />
 
     <Rectangle
       translation="[0,0]"
       width="1920"
       height="1080"
-      color="#ebebeb"
+      color="#d6d4d4"
       opacity="1.0" />
       
    <Label

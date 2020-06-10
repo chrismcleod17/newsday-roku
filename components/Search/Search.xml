@@ -6,7 +6,7 @@
       	id="SearchBackground"
       	height="1080"
       	width="1920"
-      	color="#ebebeb" />
+      	color="#d6d4d4" />
       	
    <Animation
       id="fadeinAnimation"
@@ -35,7 +35,7 @@
       translation="[0,0]"
       width="1920"
       height="1080"
-      color="#ebebeb"
+      color="#d6d4d4"
       opacity="1.0" />
 	
 	<Keyboard
@@ -64,7 +64,7 @@
       numRows="1"
       rowFocusAnimationStyle="FixedFocusWrap"
       focusBitmapUri="pkg:/images/focus_grid.9.png"
-      rowItemSize="[[436,350]]"
+	  rowItemSize="[[456,256]]"
       rowItemSpacing="[[30,0]]"
       rowLabelOffset="[[165,8]]"
       rowLabelColor="#3b92be"
@@ -96,7 +96,7 @@
    		visible="false"
       	height="480"
       	width="1920"
-      	color="#363636"
+      	color="#d6d4d4"
       	translation = "[0, 600]" />
       	
    <Rectangle
@@ -120,7 +120,7 @@
       focusBitmapUri="pkg:/images/focus_grid.9.png"
       loadingBitmapUri="pkg:/images/channel-poster_sd.png"
       failedBitmapUri="pkg:/images/channel-poster_sd.png"
-      rowItemSize="[[436,350]]"
+      rowItemSize="[[456,256]]"
       rowItemSpacing="[[30,0]]"
       rowLabelOffset="[[165,8]]"
       rowLabelColor="#3b92be"

@@ -9,7 +9,7 @@
       id="Background"
       width="1920"
       height="1080"
-      color="#ebebeb"/>
+      color="#d6d4d4"/>
 
     <!-- The main content -->
     <RowList
@@ -18,18 +18,18 @@
       rowTitleComponentName="customRowTitle"
       focusXOffset="[600,165,165,165,165,165,165]"
       itemSize="[1920,475]"
-      itemSpacing="[35,0]"
       numRows="2"
       rowFocusAnimationStyle="FixedFocusWrap"
       focusBitmapUri="pkg:/images/focus_grid.9.png"
       rowItemSize="[[845,469],[456,256]]"
       rowItemSpacing="[[30,0]]"
       rowLabelOffset="[[165,8]]"
+      rowHeights="[475,420,420,420,420,420,420,420,420,420,420,420,420,420,420,420,420,420]"
       rowLabelColor="#3b92be"
       rowLabelFont="font:LargeSystemFont"
       showRowLabel="[false, true]"
       showRowCounter="false"
-      translation="[0,220]"/>
+      translation="[0,200]"/>
             
   </children>
 

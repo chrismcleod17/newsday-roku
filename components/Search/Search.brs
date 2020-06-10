@@ -51,8 +51,8 @@ Sub onVisibleChange()
   print "Search.brs - [onVisibleChange]"
   if m.top.visible
     m.fadeIn.control="start"
-    m.keyboard.textEditBox.textColor="#ffffff"
-    m.keyboard.textEditBox.hintTextColor="#44453f"
+    m.keyboard.textEditBox.textColor="#000000"
+    m.keyboard.textEditBox.hintTextColor="#636361"
     m.keyboard.textEditBox.hintText="Search"
     makeOmnitureCall("trackState", invalid, invalid)
   else

@@ -617,15 +617,6 @@ end sub
 sub onAdEnded()
     print "Ad Ended"
     makeVideoPositionReq(m.videoPlayer.content.id)
-'    m.FadeIn.control = "start"
-'    m.HeroScreen.visible = "false"
-'    m.videoRowList.visible = false
-'    m.videoRect.visible = false
-'    m.videoLine.visible = false
-'    m.videoPlayer.visible = true
-'    m.videoPlayer.setFocus(true)
-'    m.videoPlayer.control = "play"
-'    m.videoPlayer.observeField("state", "OnVideoPlayerStateChange")
 end sub
 
 function makeVideoDictionary(omniture as Object) as Object

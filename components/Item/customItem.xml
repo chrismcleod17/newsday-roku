@@ -77,16 +77,21 @@
           
           smallTitleFont  = CreateObject("roSGNode", "Font")
 		  smallTitleFont.uri = "pkg:/fonts/HelveticaNeueLTStd-Md.otf"
-          smallTitleFont.size = 24
+          smallTitleFont.size = 30
           
           largeTitleFont  = CreateObject("roSGNode", "Font")
 		  largeTitleFont.uri = "pkg:/fonts/HelveticaNeueLTStd-Roman.otf"
           largeTitleFont.size = 54
+
+          m.Duration.width = m.Poster.width
+          m.Duration.height = m.Poster.height
+          m.Duration.vertAlign = "bottom"
+          m.Date.height = m.top.height
+          m.Date.width = m.top.width
+          m.Date.translation = "[-15, 0]"
                     
           if(m.top.height < 400)
-			'm.Poster.height = "256"
-			'm.Poster.width="456"
-			m.Title.translation = "[10,258]"
+			m.Title.translation = "[10,275]"
 			m.Title.color = "#000000"
 		    m.Title.width = "430"
 		    m.Title.height = "0"
@@ -95,21 +100,13 @@
 		    m.title.maxLines="2"
             m.Duration.translation = "[15, 0]"
             m.Date.visible = true
-            m.Date.translation = "[12, 0]"
-           ` m.Date.vertAlign = "top"
             m.Locked.translation = "[393, 184]"
             m.Shadow.uri = "pkg:/images/nd-roku-row-shadow.png"
             m.Shadow.width = m.Poster.width
             m.Shadow.height = m.Poster.height
 		  end if
-          
-          m.Duration.width = m.Poster.width
-          m.Duration.height = m.Poster.height
-          m.Duration.vertAlign = "bottom"
                     
           if(m.top.height > 400)
-            ' m.Poster.height = "512"
-             'm.Poster.width = "922"
              m.Title.color="#ffffff"
              m.Title.translation = [10, 0]
              m.Title.vertAlign = "bottom"
@@ -131,7 +128,7 @@
   
   <children>
       <Poster id="poster" 
-      		loadDisplayMode="scaleToFill" />
+      		loadDisplayMode="noScale" />
       <Poster id = "shadow"
       	uri="pkg:/images/nd-roku-main-shadow.png" />
       <Label id ="title"
@@ -140,17 +137,18 @@
       		numLines="2"
       		maxLines="2"
       		lineSpacing="0.5"
-      		color="#000000"
-      		translation="[10,225]" />
+      		color="#000000"/>
      <Label id = "duration"
      	color="#ffffff"
      	translation="[15,0]">
      	<Font role="font" uri="pkg:/fonts/HelveticaNeueLTStd-Lt.otf" size="26" />
      </Label>
      <Label id = "date"
-     	color = "#999999"
-     	translation="[12,312]">
-     	<Font role="font" uri="pkg:/fonts/HelveticaNeueLTStd-Lt.otf" size="22" />
+     	color = "#ffffff"
+        vertAlign="bottom"
+        horizAlign="right"
+     	translation="[12,0]">
+     	<Font role="font" uri="pkg:/fonts/HelveticaNeueLTStd-Lt.otf" size="26" />
     </Label>
     <Poster id="lockedcontent"
     	uri="pkg:/images/locked-content.png"

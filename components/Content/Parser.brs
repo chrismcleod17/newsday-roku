@@ -79,7 +79,7 @@ sub parseResponse()
                     item.url = part.link
                     item.streamFormat = "mp4"
                 end if
-                item.metrics = part.omniture
+                item.metrics = responseJson.omniture
                 result.push(item)
             end for
                    

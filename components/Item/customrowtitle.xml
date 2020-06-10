@@ -47,8 +47,9 @@
       		translation = "[1100, -2]"
       		visible = "false" />
       <Label id ="title"
-      		color="#3b92be">
-      		<Font role="font" uri="pkg:/fonts/HelveticaNeueLTStd-Roman.otf" size="40" />
+      		color="#3b92be"
+	  		translation="[0, 5]">
+      		<Font role="font" uri="pkg:/fonts/HelveticaNeueLTStd-Roman.otf" size="35s" />
       		</Label>
       <Label id= "adLabel"
       	color="#000000"

@@ -16,7 +16,7 @@
       	visible="false"
       	height="1080"
       	width="1920"
-      	color="#ebebeb" />
+      	color="#d6d4d4" />
       	
     <Label
     	id="OptionsLabel"
@@ -38,8 +38,8 @@
       itemSpacing="[0,30]"
       itemSize="[450, 100]"
       translation="[200,350]">
-   		<Font role="font" uri="pkg:/fonts/HelveticaNeueLTStd-Lt.otf" size="32" />
-   		<Font role="focusedFont" uri="pkg:/fonts/HelveticaNeueLTStd-Md.otf" size="32" />
+   		<Font role="font" uri="pkg:/fonts/HelveticaNeueLTStd-Lt.otf" size="40" />
+   		<Font role="focusedFont" uri="pkg:/fonts/HelveticaNeueLTStd-Md.otf" size="40" />
     </LabelList>
          
     <ScrollableText
@@ -50,7 +50,7 @@
    		height = "1070"
    		horizAlign="left"   		
    		translation = "[100,0]" >
-   		<Font role="font" uri="pkg:/fonts/HelveticaNeueLTStd-Lt.otf" size="32" />
+   		<Font role="font" uri="pkg:/fonts/HelveticaNeueLTStd-Md.otf" size="32" />
     </ScrollableText>
    		
    <ScrollableText
@@ -62,7 +62,7 @@
    		height = "1070"
    		horizAlign="left"
    		translation = "[100,0]" >
-   		<Font role="font" uri="pkg:/fonts/HelveticaNeueLTStd-Lt.otf" size="32" />
+   		<Font role="font" uri="pkg:/fonts/HelveticaNeueLTStd-Md.otf" size="32" />
     </ScrollableText>
    		
     <ScrollableText
@@ -74,7 +74,7 @@
    		height = "1070"
    		horizAlign="left"
    		translation = "[100,0]" >
-   		<Font role="font" uri="pkg:/fonts/HelveticaNeueLTStd-Lt.otf" size="32" />
+   		<Font role="font" uri="pkg:/fonts/HelveticaNeueLTStd-Md.otf" size="32" />
     </ScrollableText>
    		
     <Overhang
@@ -186,7 +186,7 @@
    		visible="false"
       	height="480"
       	width="1920"
-      	color="#ebebeb"
+      	color="#d6d4d4"
       	translation = "[0, 600]" />
       	
    <Rectangle
@@ -208,7 +208,7 @@
       numRows="1"
       rowFocusAnimationStyle="FixedFocusWrap"
       focusBitmapUri="pkg:/images/focus_grid.9.png"
-      rowItemSize="[[436,350]]"
+      rowItemSize="[[456,256]]"
       rowItemSpacing="[[30,0]]"
       rowLabelOffset="[[165,8]]"
       rowLabelColor="#3b92be"
